@@ -36,6 +36,12 @@
 # ───────────────────────────────────────────────────────
 def classify_ph(ph):
     # YOUR CODE HERE ↓
+     if ph < 6.0:
+             return "acidic"
+    elif ph <= 7.5:
+          return "neutral"
+    else:
+         return "alkaline"
     pass
 
 
@@ -64,6 +70,12 @@ def classify_ph(ph):
 # ───────────────────────────────────────────────────────
 def predict_growth(ph):
     # YOUR CODE HERE ↓
+    if ph < 6.0:
+        return "The seed may struggle.  Water is too acidic. Most seeds prefer pH between 6.0-7.5."
+    elif ph <= 7.5:
+        return "The seed will germinate well! pH is in the optimal range. Perfect for healthy growth."
+    else:
+        return "The seed will likely fail. This pH is too alkaline (basic). Detergent is too strong for most seeds."
     pass
 
 
@@ -92,8 +104,13 @@ print("🌱 Seed Germination pH Simulator")
 print("=" * 35)
 
 # Replace this fixed value with your input() code:
-ph = 6.5
-
+while True:
+    try:
+        user_input = input("Enter pH: ")
+        ph = float(user_input)
+        break
+    except ValueError:
+        print(" That's not a valid number! Please enter a number (like 6.5 or 7.0).")
 # Call your functions and print the results
 water_type = classify_ph(ph)
 prediction = predict_growth(ph)
